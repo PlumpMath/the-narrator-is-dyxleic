@@ -1,10 +1,39 @@
 body {
-    color: #333;
     font-family: sans-serif;
-    font-size: x-large;
+    font-size: xx-large;
+    color: #FFF;
+    background-color: #0c1012;
 }
 
 ul {
     list-style-type: none;
     padding: 0;
+}
+
+li {
+    font-size: x-large;
+    display: block;
+    width: 196px;
+    background-color: #141a1c;
+    margin: 6px;
+    padding: 4px;
+}
+
+#current {
+    color: #0099d7;
+}
+
+#reset {
+    border: 0;
+    color: white;
+    background-color: #ff1c4d;
+}
+
+.text {
+    margin-bottom: 8px;
+    width: 640px;
+}
+
+.correct {
+    color: #84e32b;
 }
