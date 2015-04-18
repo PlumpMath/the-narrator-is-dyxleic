@@ -30,6 +30,14 @@
 (defn get-target []
   (.-targetText js/window))
 
+(defn set-start [text]
+  (set! (.-startText js/window) text))
+
+(defn get-start []
+  (.-startText js/window))
+
+; =============================================================================
+
 (def operations {
   "reverse" str/reverse
   "rotate" (fn [string]
@@ -73,6 +81,7 @@
         (levels/levels (get-level))]
     (update-list operations)
     (set-line text-before text-after)
+    (set-start start)
     (set-current start)
     (set-target target)))
 
@@ -81,5 +90,8 @@
 ; initial run
 (if-not (local-storage/get-item "level")
   (local-storage/set-item! "level" 0))
+
+(.addEventListener (.getElementById js/document "reset") "click"
+  (fn [] (set-current (get-start))))
 
 (next-level)
