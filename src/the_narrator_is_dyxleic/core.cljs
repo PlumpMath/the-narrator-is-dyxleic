@@ -87,11 +87,26 @@
 
 ; =============================================================================
 
+(defn set-display! [id visibility]
+  (set!
+    (.-display (.-style (.getElementById js/document id)))
+    visibility))
+
+(defn add-click-listener! [id listener]
+  (.addEventListener
+    (.getElementById js/document "begin")
+    "click"
+    listener))
+
 ; initial run
 (if-not (local-storage/get-item "level")
   (local-storage/set-item! "level" 0))
 
-(.addEventListener (.getElementById js/document "reset") "click"
-  (fn [] (set-current (get-start))))
+(add-click-listener! "begin" (fn []
+  (set-display! "intro" "none")
+  (set-display! "game" "block")
 
-(next-level)
+  (add-click-listener! "reset" (fn []
+    #(set-current (get-start))))
+
+  (next-level)))

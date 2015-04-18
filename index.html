@@ -4,7 +4,17 @@
     <title>The narrator is dyxleic</title>
 </head>
 <body>
-    <div>
+    <div id="intro">
+        <p>
+            These are the amazing adventures...
+            The author of these chronicles has, unfortunately, made minor mistakes when writing...
+            and you'll have to fix them
+        </p>
+
+        <button id="begin">Begin</button>
+    </div>
+
+    <div id="game" style="display: none">
         <ul id="operations">
 
         </ul>
@@ -16,7 +26,12 @@
         </div>
 
         <button id="reset">Reset</button>
-        <button id="next">Next</button>
+    </div>
+
+    <div id="outro" style="display: none">
+        <p>
+            The hero returns back home and tired goes straight to sleep
+        </p>
     </div>
 
     <script src="out/the_narrator_is_dyxleic.js" type="text/javascript"></script>
