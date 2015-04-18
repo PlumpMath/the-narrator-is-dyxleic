@@ -8,7 +8,7 @@
     :text-after "out of your hat and hurl it at the beast."
     :operations ["rotate"]}
   {
-    :start "snoop"
+    :start "noops" ; snoop
     :target "spoon"
     :text-before "A laser unicorn stands in your way. You deflect its beam with a"
     :text-after ". Run while it's stunned!"

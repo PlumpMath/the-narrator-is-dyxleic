@@ -45,15 +45,17 @@
 
 (def operations {
   "reverse" str/reverse
-  "rotate" (fn [string]
-             (str
-               (last string)
-               (subs string 0 (dec (count string)))))
-  "push-a" (fn [string] (str string "a"))
-  "push-b" (fn [string] (str string "b"))})
+  "rotate" #(str
+              (last %)
+              (subs % 0 (dec (count %))))
+  "push-a" #(str % "a")
+  "push-b" #(str % "b")})
+
+(defn correct? []
+  (= (get-current) (get-target)))
 
 (defn check-win []
-  (if (= (get-current) (get-target))
+  (if (correct?)
     (do
       (remove-class "current" "neutral")
       (add-class "current" "correct")
@@ -65,14 +67,15 @@
         2500))))
 
 (defn clicked-on [text]
-  (let [new-string ((get operations text) (get-current))]
-    (set-current new-string)
-    (check-win)))
+  (if-not (correct?)
+    (let [new-string ((get operations text) (get-current))]
+      (set-current new-string)
+      (check-win))))
 
 (defn create-item [text]
   (let [item (.createElement js/document "li")]
     (set! (.-textContent item) text)
-    (.addEventListener item "click" (fn [] (clicked-on text)))
+    (.addEventListener item "click" #(clicked-on text))
     item))
 
 (defn update-list [elements]
