@@ -19,8 +19,12 @@ li {
     padding: 4px;
 }
 
-#current {
+.neutral {
     color: #0099d7;
+}
+
+.correct {
+    color: #84e32b;
 }
 
 #reset {
@@ -32,8 +36,4 @@ li {
 .text {
     margin-bottom: 8px;
     width: 640px;
-}
-
-.correct {
-    color: #84e32b;
 }

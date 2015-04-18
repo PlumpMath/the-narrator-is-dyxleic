@@ -37,6 +37,11 @@
   (.-startText js/window))
 
 ; =============================================================================
+(defn add-class [id class]
+  (.add (.-classList (.getElementById js/document id)) class))
+
+(defn remove-class [id class]
+  (.remove (.-classList (.getElementById js/document id)) class))
 
 (def operations {
   "reverse" str/reverse
@@ -49,8 +54,15 @@
 
 (defn check-win []
   (if (= (get-current) (get-target))
-    (do (increment-level)
-      (next-level))))
+    (do
+      (remove-class "current" "neutral")
+      (add-class "current" "correct")
+      (js/setTimeout (fn []
+          (remove-class "current" "correct")
+          (add-class "current" "neutral")
+          (increment-level)
+          (next-level))
+        2500))))
 
 (defn clicked-on [text]
   (let [new-string ((get operations text) (get-current))]
