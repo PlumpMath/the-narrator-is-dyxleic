@@ -5,7 +5,7 @@
     :start "bitrab"
     :target "rabbit"
     :text-before "A rabbid cabbage blocks the path. You pull a"
-    :text-after "out of your hat and hurl it at the beast."
+    :text-after " out of your hat and hurl it at the beast."
     :operations ["rotate"]}
   {
     :start "noops" ; snoop
