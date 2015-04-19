@@ -59,6 +59,7 @@
   "duplicate-last" #(str % (last %))
   "push-s" #(str % "s")
   "push-r" #(str % "r")
+  "push-as" #(str % "as")
   "rr -> a" #(str/replace % #"rr" "a")
   "rrr -> o" #(str/replace % #"rrr" "o")
   "rh -> reh" #(str/replace % #"rh" "reh")
@@ -127,14 +128,17 @@
     "click"
     listener))
 
-; initial run
 (set-level! 0)
 
-(add-click-listener! "begin" (fn []
-  (set-display! "intro" "none")
-  (set-display! "game" "block")
+(add-click-listener! "begin1" (fn []
+  (set-display! "intro1" "none")
+  (set-display! "intro2" "block")
 
-  (add-click-listener! "reset"
-    #(set-current! (get-start)))
+  (add-click-listener! "begin2" (fn []
+    (set-display! "intro2" "none")
+    (set-display! "game" "block")
 
-  (next-level!)))
+    (add-click-listener! "reset"
+      #(set-current! (get-start)))
+
+    (next-level!)))))

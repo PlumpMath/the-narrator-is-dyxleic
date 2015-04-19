@@ -47,7 +47,7 @@ li:hover {
     background-color: #ff1c4d;
 }
 
-#begin {
+#begin1, #begin2 {
     border: 0;
     color: white;
     background-color: #0099d7;
@@ -69,7 +69,7 @@ li:hover {
     font-size: small;
 }
 
-#intro, #outro {
+#intro1, #intro2, #outro {
     width: 640px;
     margin: 256px auto 0 auto;
     text-align: justify;

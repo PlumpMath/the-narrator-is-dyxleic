@@ -26,14 +26,14 @@
     :start "yrH"
     :target "Harry"
     :text-before "Wild crocodile in the cave! In a brief moment of panic, Jack throws "
-    :text-after " at the crocodile. The crocodile and Harry are both really, really hungry…"
+    :text-after " at the crocodile. The crocodile and Harry seem both hungry so Jack decides to leave the two alone."
     :operations ["rotate" "duplicate-last" "rr -> a"]}
   {
     :start "cellut"
     :target "carrot"
     :text-before (str
-                   "Jack gets out of the cave but is stopped by a snowman guard: ‘Intruders shall pay!’"
-                   "Jack grabs the snowman’s")
+                   "Jack gets out of the cave but is stopped by a snowman guard: 'Intruders shall pay!'"
+                   "Jack grabs the snowman's")
     :text-after (str
                   " nose and coal eyes and feeds them to a passing rabbit. The faceless snowman is furious and "
                   "throws Jack in a dungeon.")
@@ -48,22 +48,22 @@
     :operations ["reverse" "rotate" "pop" "ef -> eaf" "rh -> reh"]}
   {
     :start "asd"
-    :target "torch"
+    :target "tchro"
     :text-before (str
-                   "The key fits and Jack’s out of the cell - into a hallway. A few steps down the hallway, "
+                   "The key fits and Jack's out of the cell - into a hallway. A few steps down the hallway, "
                    "a bat is attacking a weasel! Fortunately, Jack brought along a")
     :text-after (str
                   " and swings it at the bat, scaring it away. The weasel thanks Jack and asks him for a ride out."
-                  "Jack agrees and the wesel climbs into climbs into Jack’s pocket. A door stands at the end of the hallway.")
-    :operations ["reverse"]}
+                  "Jack agrees and the wesel climbs into Jack's pocket. A door stands at the end of the hallway.")
+    :operations ["reverse" "rotate"]}
   {
     :start "asd"
-    :target "weasel"
+    :target "wel"
     :text-before "Jack opens the door, only to reveal a sleeping Basilisk. Jack sees the "
     :text-after (str
                   " jump out of his pocket and speed towards the serpent-like creature. The Basilisk twists and turns,"
-                  "passing out from the dreaded weasel odor. On the other side of the hall there’s a gate.")
-    :operations ["reverse"]}
+                  "passing out from the dreaded weasel odor. On the other side of the hall there's a gate.")
+    :operations ["rotate" "duplicate-last" "push-as"]}
   {
     :start "mori"
     :target "mirror"
@@ -71,6 +71,6 @@
                    "The gate leads to a swamp. In the middle of the swamp, surrounded by dead bodies, "
                    "there is Cthulhu himself. Jack spots a pocket")
     :text-after (str
-                  ", presumably lost by one of Cthulhu’s victims. When Cthulhu attacks, Jack uses the object. "
+                  ", presumably lost by one of Cthulhu's victims. When Cthulhu attacks, Jack uses the object. "
                   "Struck by his own terrible appearance, Cthulhu implodes and dissapears.")
     :operations ["reverse" "duplicate" "pop" "rotate"]}])
