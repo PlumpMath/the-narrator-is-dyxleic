@@ -2,7 +2,6 @@
   (:require
     [clojure.browser.repl :as repl]
     [clojure.string :as str]
-    [the-narrator-is-dyxleic.localstorage :as local-storage]
     [the-narrator-is-dyxleic.levels :as levels]
     ))
 
@@ -36,7 +35,14 @@
 (defn get-start []
   (.-startText js/window))
 
+(defn set-level! [level]
+  (set! (.-currentLevel js/window) level))
+
+(defn get-level []
+  (.-currentLevel js/window))
+
 ; =============================================================================
+
 (defn add-class! [id class]
   (.add (.-classList (.getElementById js/document id)) class))
 
@@ -62,8 +68,7 @@
       (js/setTimeout (fn []
           (remove-class! "current" "correct")
           (add-class! "current" "neutral")
-          (increment-level!)
-          (next-level!))
+          (increment-level!))
         2500))))
 
 (defn clicked-on [text]
@@ -86,10 +91,12 @@
         (.appendChild list item)))))
 
 (defn increment-level! []
-  (local-storage/set-item! "level"
-    (inc (js/parseInt (local-storage/get-item "level")))))
-
-(def get-level (partial local-storage/get-item "level"))
+  (if (= (dec (count levels/levels)) (get-level))
+    (do (set-display! "game" "none")
+        (set-display! "outro" "block"))
+    (do
+      (set-level! (inc (get-level)))
+      (next-level!))))
 
 (defn next-level! []
   (let [{:keys [operations text-before text-after start target]}
@@ -114,8 +121,7 @@
     listener))
 
 ; initial run
-(if-not (local-storage/get-item "level")
-  (local-storage/set-item! "level" 0))
+(set-level! 0)
 
 (add-click-listener! "begin" (fn []
   (set-display! "intro" "none")
