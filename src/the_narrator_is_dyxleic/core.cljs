@@ -13,34 +13,34 @@
 (defn get-text [id]
   (.-textContent (.getElementById js/document id)))
 
-(defn set-text [id text]
+(defn set-text! [id text]
   (set! (.-textContent (.getElementById js/document id)) text))
 
 (def get-current (partial get-text "current"))
 
-(def set-current (partial set-text "current"))
+(def set-current! (partial set-text! "current"))
 
-(defn set-line [before after]
-  (set-text "text-before" before)
-  (set-text "text-after" after))
+(defn set-line! [before after]
+  (set-text! "text-before" before)
+  (set-text! "text-after" after))
 
-(defn set-target [text]
+(defn set-target! [text]
   (set! (.-targetText js/window) text))
 
 (defn get-target []
   (.-targetText js/window))
 
-(defn set-start [text]
+(defn set-start! [text]
   (set! (.-startText js/window) text))
 
 (defn get-start []
   (.-startText js/window))
 
 ; =============================================================================
-(defn add-class [id class]
+(defn add-class! [id class]
   (.add (.-classList (.getElementById js/document id)) class))
 
-(defn remove-class [id class]
+(defn remove-class! [id class]
   (.remove (.-classList (.getElementById js/document id)) class))
 
 (def operations {
@@ -54,23 +54,23 @@
 (defn correct? []
   (= (get-current) (get-target)))
 
-(defn check-win []
+(defn check-win! []
   (if (correct?)
     (do
-      (remove-class "current" "neutral")
-      (add-class "current" "correct")
+      (remove-class! "current" "neutral")
+      (add-class! "current" "correct")
       (js/setTimeout (fn []
-          (remove-class "current" "correct")
-          (add-class "current" "neutral")
-          (increment-level)
-          (next-level))
+          (remove-class! "current" "correct")
+          (add-class! "current" "neutral")
+          (increment-level!)
+          (next-level!))
         2500))))
 
 (defn clicked-on [text]
   (if-not (correct?)
     (let [new-string ((get operations text) (get-current))]
-      (set-current new-string)
-      (check-win))))
+      (set-current! new-string)
+      (check-win!))))
 
 (defn create-item [text]
   (let [item (.createElement js/document "li")]
@@ -78,27 +78,27 @@
     (.addEventListener item "click" #(clicked-on text))
     item))
 
-(defn update-list [elements]
+(defn update-list! [elements]
   (let [list (.getElementById js/document "operations")]
     (set! (.-innerHTML list) "")
     (doseq [element elements]
       (let [item (create-item element)]
         (.appendChild list item)))))
 
-(defn increment-level []
+(defn increment-level! []
   (local-storage/set-item! "level"
     (inc (js/parseInt (local-storage/get-item "level")))))
 
 (def get-level (partial local-storage/get-item "level"))
 
-(defn next-level []
+(defn next-level! []
   (let [{:keys [operations text-before text-after start target]}
         (levels/levels (get-level))]
-    (update-list operations)
-    (set-line text-before text-after)
-    (set-start start)
-    (set-current start)
-    (set-target target)))
+    (update-list! operations)
+    (set-line! text-before text-after)
+    (set-start! start)
+    (set-current! start)
+    (set-target! target)))
 
 ; =============================================================================
 
@@ -109,7 +109,7 @@
 
 (defn add-click-listener! [id listener]
   (.addEventListener
-    (.getElementById js/document "begin")
+    (.getElementById js/document id)
     "click"
     listener))
 
@@ -121,7 +121,7 @@
   (set-display! "intro" "none")
   (set-display! "game" "block")
 
-  (add-click-listener! "reset" (fn []
-    #(set-current (get-start))))
+  (add-click-listener! "reset"
+    #(set-current! (get-start)))
 
-  (next-level)))
+  (next-level!)))
