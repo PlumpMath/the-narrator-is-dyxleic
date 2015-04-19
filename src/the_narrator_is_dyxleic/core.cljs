@@ -54,8 +54,15 @@
   "rotate" #(str
               (last %)
               (subs % 0 (dec (count %))))
-  "push-a" #(str % "a")
-  "push-b" #(str % "b")})
+  "pop" #(subs % 0 (dec (count %)))
+  "duplicate" #(str % %)
+  "duplicate-last" #(str % (last %))
+  "push-s" #(str % "s")
+  "push-r" #(str % "r")
+  "rr -> a" #(str/replace % #"rr" "a")
+  "rrr -> o" #(str/replace % #"rrr" "o")
+  "rh -> reh" #(str/replace % #"rh" "reh")
+  "ef -> eaf" #(str/replace % #"ef" "eaf")})
 
 (defn correct? []
   (= (get-current) (get-target)))
@@ -69,7 +76,7 @@
           (remove-class! "current" "correct")
           (add-class! "current" "neutral")
           (increment-level!))
-        2500))))
+        1500))))
 
 (defn clicked-on [text]
   (if-not (correct?)
