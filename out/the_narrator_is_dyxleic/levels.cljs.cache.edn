@@ -1,0 +1,2 @@
+;; Analyzed by ClojureScript 0.0-2755
+{:defs {levels {:file "src/the_narrator_is_dyxleic/levels.cljs", :line 3, :column 1, :end-line 3, :end-column 13, :test true, :name the-narrator-is-dyxleic.levels/levels}}, :name the-narrator-is-dyxleic.levels, :doc nil, :excludes #{}, :use-macros nil, :require-macros nil, :uses nil, :requires nil, :imports nil}
