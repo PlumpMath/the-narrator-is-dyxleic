@@ -4,15 +4,15 @@
   {
     :start "bitrab"
     :target "rabbit"
-    :text-before "A rabbid cabbage blocks the path. You pull a"
-    :text-after " out of your hat and hurl it at the beast."
+    :text-before "Jack strolls through the forest. Suddenly, Jack notices that a rabbid cabbage blocks the path. Jack pulls a"
+    :text-after " out of his hat and hurls it at the beast. Cabbage gone, the path forward is clear."
     :operations ["rotate"]}
   {
     :start "snoop"
     :target "spoon"
-    :text-before "A laser unicorn stands in your way. You deflect its beam with a"
-    :text-after ". Run while it's stunned!"
-    :operations ["reverse" "rotate"]}
+    :text-before "Just a few steps down the path, a laser unicorn jumps out of a shrubberry bush and stands in Jack's way. Jack deflect its beam with a"
+    :text-after ". Better run while it's stunned!"
+    :operations ["rotate" "reverse"]}
   {
     :start "tep"
     :target "steps"
@@ -23,16 +23,16 @@
     :text-after " away. Hungry Harry violently hits the wall of the pit. The wall crumbles, revealing a cave."
     :operations ["reverse" "rotate" "push-s"]}
   {
-    :start "yrH"
+    :start "Hry"
     :target "Harry"
     :text-before "Wild crocodile in the cave! In a brief moment of panic, Jack throws "
-    :text-after " at the crocodile. The crocodile and Harry seem both hungry so Jack decides to leave the two alone."
+    :text-after " at the crocodile. The crocodile and Harry both seem hungry so Jack decides to leave the two alone."
     :operations ["rotate" "duplicate-last" "rr -> a"]}
   {
     :start "cellut"
     :target "carrot"
     :text-before (str
-                   "Jack gets out of the cave but is stopped by a snowman guard: 'Intruders shall pay!'"
+                   "The cave exit leads to a wintery realm. Jack looks briefly around but is stopped by a snowman guard: 'Intruders shall pay!'"
                    "Jack grabs the snowman's")
     :text-after (str
                   " nose and coal eyes and feeds them to a passing rabbit. The faceless snowman is furious and "
@@ -51,14 +51,14 @@
     :target "tchro"
     :text-before (str
                    "The key fits and Jack's out of the cell - into a hallway. A few steps down the hallway, "
-                   "a bat is attacking a weasel! Fortunately, Jack brought along a")
+                   "a wild bat is attacking a wild weasel! Fortunately, Jack brought along a")
     :text-after (str
-                  " and swings it at the bat, scaring it away. The weasel thanks Jack and asks him for a ride out."
+                  " and swings it at the bat, scaring it away. The wild weasel thanks Jack and asks him for a ride out."
                   "Jack agrees and the wesel climbs into Jack's pocket. A door stands at the end of the hallway.")
     :operations ["reverse" "rotate"]}
   {
-    :start "asd"
-    :target "wel"
+    :start "wel"
+    :target "weasel"
     :text-before "Jack opens the door, only to reveal a sleeping Basilisk. Jack sees the "
     :text-after (str
                   " jump out of his pocket and speed towards the serpent-like creature. The Basilisk twists and turns,"
