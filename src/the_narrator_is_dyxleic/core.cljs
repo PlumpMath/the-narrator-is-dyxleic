@@ -63,7 +63,7 @@
   "rr -> a" #(str/replace % #"rr" "a")
   "rrr -> o" #(str/replace % #"rrr" "o")
   "rh -> reh" #(str/replace % #"rh" "reh")
-  "ef -> eaf" #(str/replace % #"ef" "eaf")})
+  "ef -> aef" #(str/replace % #"ef" "aef")})
 
 (defn correct? []
   (= (get-current) (get-target)))

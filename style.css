@@ -65,16 +65,21 @@ li:hover {
 }
 
 .instructions {
-    margin-top: 256px;
+    margin-top: 192px;
     font-size: small;
 }
 
 #intro1, #intro2, #outro {
     width: 640px;
-    margin: 256px auto 0 auto;
+    margin: 192px auto 0 auto;
     text-align: justify;
 }
 
 button {
     padding: 3px 6px;
+}
+
+.made-for {
+    margin-top: 192px;
+    font-size: small;
 }

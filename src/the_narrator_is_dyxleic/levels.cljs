@@ -45,17 +45,17 @@
                    "Time to escape the dungeon! Jack shares the cell with a menacing skeleton."
                    "The skeleton appears to be holding a key. Jack grabs a")
     :text-after " from the pile of junk in the corner of the cell and tickles the skeleton, stealing its key."
-    :operations ["reverse" "rotate" "pop" "ef -> eaf" "rh -> reh"]}
+    :operations ["reverse" "rotate" "pop" "ef -> aef" "rh -> reh"]}
   {
-    :start "asd"
-    :target "tchro"
+    :start "thcr"
+    :target "torch"
     :text-before (str
                    "The key fits and Jack's out of the cell - into a hallway. A few steps down the hallway, "
                    "a wild bat is attacking a wild weasel! Fortunately, Jack brought along a")
     :text-after (str
                   " and swings it at the bat, scaring it away. The wild weasel thanks Jack and asks him for a ride out."
                   "Jack agrees and the wesel climbs into Jack's pocket. A door stands at the end of the hallway.")
-    :operations ["reverse" "rotate"]}
+    :operations ["reverse" "rotate" "duplicate-last" "rrr -> o"]}
   {
     :start "wel"
     :target "weasel"
